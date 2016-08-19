@@ -1,5 +1,5 @@
 {
-  "name": "leaflet-cordova",
+  "name": "leaflet",
   "version": "0.7.7",
   "description": "JavaScript library for mobile-friendly interactive maps",
   "devDependencies": {
