@@ -5,9 +5,9 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 	_sqldb: null,
 
 	initialize: function(db, options) {
-		this._sqldb = db;
-
 		console.log('CordovaSql initialise called');
+		this._sqldb = sqlitePlugin.openDatabase(db, '1.0', '', 1);
+
 		var wmsParams = L.extend({}, this.defaultWmsParams),
 			tileSize = options.tileSize || this.options.tileSize;
 
