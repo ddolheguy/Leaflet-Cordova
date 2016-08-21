@@ -1,3 +1,5 @@
+NOTE: This is a locked version of Leaflet at 0.7.7 (hence not forked) with no intention at this stage of change due to some structure changes of Leaflet.  This version contains some additional tile layers for using SqlLite on Cordova.
+
 <img src="http://leafletjs.com/docs/images/logo.png" alt="Leaflet" />
 
 Leaflet is an open source JavaScript library for **mobile-friendly interactive maps**.
