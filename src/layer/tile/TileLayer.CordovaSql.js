@@ -7,6 +7,7 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 	initialize: function(db, options) {
 		this._sqldb = db;
 
+		console.log('CordovaSql initialise called');
 		var wmsParams = L.extend({}, this.defaultWmsParams),
 			tileSize = options.tileSize || this.options.tileSize;
 
@@ -30,13 +31,15 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 	},
 	getTileUrl: function (tilePoint, tile) {
 		try {
+			console.log('CordovaSql getTileURL called');
+
 			var z = parseInt(tilePoint.z);
 			var x = parseInt(tilePoint.x);
 			var y = parseInt(tilePoint.y);
 			var base64Prefix = 'data:image/png;base64,';
 			var base64JpgPrefix = 'data:image/jpeg;base64,';
 
-			//console.log('Tile: X: ' + x + ' Y:' + y + ' Z:' + z);
+			console.log('Tile: X: ' + x + ' Y:' + y + ' Z:' + z);
 
 			var query = 'SELECT tileimage FROM tiles WHERE z = ? AND x = ? AND y = ?';
 			this._sqldb.executeSql(query, [z, x, y], function (res) {
@@ -62,6 +65,7 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 		return this;
 	},
 	_loadTile: function (tile, tilePoint) {
+		console.log('_loadTile called');
 		tile._layer  = this;
 		tile.onload  = this._tileOnLoad;
 		tile.onerror = this._tileOnError;
