@@ -41,6 +41,10 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 
 			console.log('Tile: X: ' + x + ' Y:' + y + ' Z:' + z);
 
+			if (this._sqldb === null) {
+				console.log('DB IS NULL');
+			}
+
 			this._sqldb.transaction(function (txn) {
 				txn.executeSql('SELECT tileimage FROM tiles WHERE z = ? AND x = ? AND y = ?', [8, 123, 84], function (tx, res) {
 					if (res.rows.length > 0) {
@@ -63,6 +67,7 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 		}
 		catch (e) {
 			console.error('Error in running executeSql in mapping');
+			console.error(JSON.stringify(e));
 		}
 	},
 	setSqlDb: function (db, noRedraw) {
@@ -85,5 +90,6 @@ L.TileLayer.CordovaSql = L.TileLayer.extend({
 });
 
 L.tileLayer.cordovaSql = function (db, options) {
+	debugger;
 	return new L.TileLayer.CordovaSql(db, options);
 };
